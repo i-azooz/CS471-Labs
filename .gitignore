@@ -1,4 +1,3 @@
-**/migrations
-**/__pycache__
-db.sqlite3
-*.log
+**/migrations/ 
+**/__pycache__/ 
+db.sqlite3 
