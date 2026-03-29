@@ -1,0 +1,26 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<div style="padding: 20px;">
+    <h2>Task 2: Text formatters (nested formatters)</h2>
+    
+    <p><b>This text is bold</b></p>
+    
+    <p><strong>This text is strong</strong></p>
+    
+    <p><i>This text is italic</i></p>
+    
+    <p><em>This text is emphasized</em></p>
+    
+    <p><u>This text is underlined</u></p>
+    
+    <p><del>This text is deleted</del></p>
+    
+    <p>This is <sub>subscript</sub> and this is <sup>superscript</sup></p>
+    
+    <hr>
+    
+    <h3>Nested Formatters Example:</h3>
+    <p>You can <b><i>combine</i></b> different <u><i><b>formatters</b></i></u> together.</p>
+</div>
+{% endblock content %}
