@@ -15,3 +15,36 @@
 .topnav a.active {
     color: #008CBA;
 }
+/* تنسيق الحاوية */
+.links-container {
+    text-align: center;
+    padding: 20px;
+}
+
+/* التنسيق الأساسي للروابط */
+.qu-link {
+    display: block; /* يظهر ككتلة */
+    width: fit-content;
+    margin: 10px auto;
+    padding: 15px;
+    background-color: #f0f0f0;
+    color: blue;
+    text-decoration: none;
+    border: 1px solid #ccc;
+}
+
+/* عند مرور الماوس (Hover) */
+.qu-link:hover {
+    background-color: #e0e0e0;
+    color: red;
+}
+
+/* عند الضغط على الرابط (Active) */
+.qu-link:active {
+    background-color: yellow;
+}
+
+/* الروابط التي تمت زيارتها (Visited) */
+.qu-link:visited {
+    color: purple;
+}
