@@ -17,3 +17,14 @@ def aboutus(request):
 # --- دالة اللاب القديم (عشان يختفي الخطأ) ---
 def add(request, n1, n2):
     return HttpResponse(str(n1 + n2))
+    def links_view(request):
+    return render(request, 'bookmodule/links.html')
+
+def formatting_view(request):
+    return render(request, 'bookmodule/formatting.html')
+
+def listing_view(request):
+    return render(request, 'bookmodule/listing.html')
+
+def tables_view(request):
+    return render(request, 'bookmodule/tables.html')
