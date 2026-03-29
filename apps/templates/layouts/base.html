@@ -1,19 +1,25 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
+{% load static %}
 <head>
+    <title>{% block title %} {% endblock title %}</title>
     <meta charset="UTF-8">
-    <title>{% block title %} Library {% endblock %}</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
-    <link rel="icon" href="{% static 'qu-icon.png' %}">
+    {% block stylesheets %} {% endblock stylesheets %}
 </head>
 <body>
-    {% include "includes/header.html" %}
-    
-    <div class="content">
-        {% block content %} {% endblock %}
+    <div class="topnav">
+        <a href="{% url 'books.index' %}">Home</a>
+        <a href="{% url 'books.list_books' %}">List Books</a>
+        <a href="{% url 'books.aboutus' %}">About</a>
     </div>
 
-    {% include "includes/footer.html" %}
+    {% block content %} 
+    {% endblock content %}
+
+    <hr>
+    <footer>
+        <p>© 2026 Library Project - Abu Ghaith</p>
+    </footer>
 </body>
 </html>
