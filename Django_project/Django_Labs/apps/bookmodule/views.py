@@ -22,17 +22,14 @@ def search(request):
         
         for item in books:
             contained = False
-            # فلترة النتائج بناءً على الاختيارات
             if isTitle and keyword in item['title'].lower(): contained = True
             if not contained and isAuthor and keyword in item['author'].lower(): contained = True
             
             if contained:
                 newBooks.append(item)
         
-        # فتح صفحة النتائج مع قائمة الكتب المفلترة
         return render(request, 'bookmodule/bookList.html', {'books': newBooks})
         
-    # إذا لم يكن البحث مضغوطاً، فقط اعرض صفحة البحث
     return render(request, 'bookmodule/search.html')
 
 def getBooksList():
@@ -40,3 +37,7 @@ def getBooksList():
     book2 = {'id': 56788765, 'title': 'Reversing: Secrets of Reverse Engineering', 'author': 'E. Eilam'}
     book3 = {'id': 43211234, 'title': 'The Hundred-Page Machine Learning Book', 'author': 'Andriy Burkov'}
     return [book1, book2, book3]
+
+def bookList(request):
+    render_context = {'books': getBooksList()}
+    return render(request, 'bookmodule/bookList.html', render_context)
