@@ -6,4 +6,5 @@ urlpatterns = [
     path('html5/links/', views.links_view, name="books.links"),
     path('html5/tables/', views.tables_view, name="books.tables"),
     path('html5/listing/', views.listing_view, name="books.listing"),
+    path('search/', views.search, name="bookmodule-search"),
 ]
