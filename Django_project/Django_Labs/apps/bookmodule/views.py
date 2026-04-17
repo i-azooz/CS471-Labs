@@ -1,4 +1,6 @@
 from django.shortcuts import render, HttpResponse
+from .models import Book  
+
 
 def index(request):
     return HttpResponse("Hello, world!")
@@ -41,3 +43,27 @@ def getBooksList():
 def bookList(request):
     render_context = {'books': getBooksList()}
     return render(request, 'bookmodule/bookList.html', render_context)
+
+
+
+def lab7_insert_data(request):
+    Book.objects.create(title='Continuous Delivery', author='J.Humble and D. Farley', price=120.0, edition=3)
+
+    Book.objects.create(title='Reversing: Secrets of Reverse Engineer', author='E. Eilam', price=97.0, edition=2)
+
+
+    Book.objects.create(title='The Hundred-Page Machine Learning Book', author='Andriy Burkov', price=100.0, edition=4)
+    
+    Book.objects.create(title='Django and Python Web Development', author='Abdulaziz', price=150.0, edition=2)
+
+    return HttpResponse("Data Inserted Successfully!")
+
+def simple_query(request):
+    
+   mybooks = Book.objects.filter(title__icontains='and') 
+   return render(request, 'bookmodule/bookList.html', {'books': mybooks})
+
+def complex_query(request):
+    mybooks = Book.objects.filter(author__isnull=False).filter(title__icontains='and').filter(edition__gte=2)
+    return render(request, 'bookmodule/bookList.html', {'books': mybooks})
+

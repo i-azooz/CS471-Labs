@@ -8,4 +8,7 @@ urlpatterns = [
     path('html5/listing/', views.listing_view, name="books.listing"),
     path('search/', views.search, name="bookmodule-search"),
     path('bookList/', views.bookList, name="bookList"),
+    path('lab7/insert/', views.lab7_insert_data),
+    path('lab7/query/', views.simple_query),
+    path('lab7/complexquery/', views.complex_query),
 ]

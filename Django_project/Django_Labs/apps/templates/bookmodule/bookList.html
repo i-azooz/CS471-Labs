@@ -4,19 +4,12 @@
     <h2 class="mb-4">Search Results:</h2>
     
     <div class="row">
-        {% for book in books %}
-        <div class="col-md-6 mb-3">
-            <div class="card h-100 border-start border-primary border-4 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title text-primary">{{ book.title }}</h5>
-                    <p class="card-text text-muted mb-1"><strong>Author:</strong> {{ book.author }}</p>
-                    <span class="badge bg-light text-dark">Book ID: {{ book.id }}</span>
-                </div>
-            </div>
-        </div>
-        {% empty %}
-        <div class="alert alert-warning w-100">No books found matching your keyword.</div>
-        {% endfor %}
+       {% for obj in books %}
+    <div>
+        ID: {{ obj.id }}, Title: {{ obj.title }}, Author: {{ obj.author }}
+    </div>
+    <hr>
+{% endfor %} 
     </div>
 
     <div class="mt-4">
