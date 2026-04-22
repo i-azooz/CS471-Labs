@@ -19,5 +19,5 @@ from django.urls import path, include # أضفنا الفاصلة وكلمة inc
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('bookmodule/', include('apps.bookmodule.urls')),
+    path( '',include('apps.bookmodule.urls')),
 ]
