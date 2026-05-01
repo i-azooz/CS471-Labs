@@ -1,0 +1,17 @@
+
+
+<h1>Books with Price <= 80</h1>
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Price</th>
+    </tr>
+    {% for book in books %}
+    <tr>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.price }}</td>
+    </tr>
+    {% endfor %}
+</table>

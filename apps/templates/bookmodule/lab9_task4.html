@@ -1,0 +1,17 @@
+<h2>Publisher Price Statistics</h2>
+<table border="1">
+    <tr>
+        <th>Publisher Name</th>
+        <th>Average Price</th>
+        <th>Min Price</th>
+        <th>Max Price</th>
+    </tr>
+    {% for pub in publishers %}
+    <tr>
+        <td>{{ pub.name }}</td>
+        <td>{{ pub.avg_price|floatformat:2 }}</td>
+        <td>{{ pub.min_price }}</td>
+        <td>{{ pub.max_price }}</td>
+    </tr>
+    {% endfor %}
+</table>

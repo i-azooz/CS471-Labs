@@ -1,0 +1,13 @@
+<h2>Publishers and their Oldest Book Date</h2>
+<table border="1">
+    <tr>
+        <th>Publisher Name</th>
+        <th>Oldest Book Publication Date</th>
+    </tr>
+    {% for pub in publishers %}
+    <tr>
+        <td>{{ pub.name }}</td>
+        <td>{{ pub.oldest_book_date|default:"No Date Available" }}</td>
+    </tr>
+    {% endfor %}
+</table>
