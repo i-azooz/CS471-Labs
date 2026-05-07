@@ -1,9 +1,8 @@
-from django.shortcuts import render, HttpResponse
-from django.db.models import Q, Avg, Sum, Max, Min, F, ExpressionWrapper, FloatField
-from .models import Book, Student 
-from .models import Book, Publisher, Author  
-from django.db.models import Sum 
-from django.db.models import Avg, Max, Min
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Book
+from .forms import BookForm
+from django.db.models import Count, Q
+
 
 def index(request):
     return HttpResponse("Hello, world!")
@@ -133,7 +132,6 @@ def lab9_task4(request):
     )
     return render(request, 'bookmodule/lab9_task4.html', {'publishers': publishers})
 
-from django.db.models import Count, Q
 
 def lab9_task5(request):
 
@@ -148,3 +146,38 @@ def lab9_task6(request):
         filtered_books_count=Count('book', filter=Q(book__price__gt=50) & Q(book__quantity__lt=5) & Q(book__quantity__gte=1))
     )
     return render(request, 'bookmodule/lab9_task6.html', {'publishers': publishers})
+
+def lab9_listbooks(request):
+    books = Book.objects.all()
+    return render(request, 'bookmodule/lab9_part1/listbooks.html', {'books': books})
+
+def lab9_addbook(request):
+    if request.method == 'POST':
+        t, a = request.POST.get('title'), request.POST.get('author')
+        p, q = request.POST.get('price'), request.POST.get('quantity')
+        Book.objects.create(title=t, author=a, price=p, quantity=q)
+        return redirect('lab9_listbooks')
+    return render(request, 'bookmodule/lab9_part1/addbook.html')
+
+def lab9_editbook(request, id):
+    book = get_object_or_404(Book, id=id)
+    if request.method == 'POST':
+        book.title, book.author = request.POST.get('title'), request.POST.get('author')
+        book.price, book.quantity = request.POST.get('price'), request.POST.get('quantity')
+        book.save()
+        return redirect('lab9_listbooks')
+    return render(request, 'bookmodule/lab9_part1/editbook.html', {'book': book})
+
+def lab9_deletebook(request, id):
+    get_object_or_404(Book, id=id).delete()
+    return redirect('lab9_listbooks')
+
+def lab9_addbook2(request):
+    if request.method == 'POST':
+        form = BookForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lab9_listbooks')
+    else:
+        form = BookForm()
+    return render(request, 'bookmodule/lab9_part2/addbook.html', {'form': form})
